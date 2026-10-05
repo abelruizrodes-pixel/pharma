@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import { 
   TrendingUp, Users, Plane, Pill, ShieldAlert, BadgeDollarSign, 
-  MapPin, CheckCircle2, AlertTriangle, CalendarDays, Wallet, FileText 
+  MapPin, CheckCircle2, AlertTriangle, CalendarDays, Wallet, FileText,
+  BookOpen, ArrowRight, DollarSign
 } from 'lucide-react';
 
 export default function DashboardSocios() {
@@ -47,12 +48,14 @@ export default function DashboardSocios() {
               <button onClick={() => setActiveTab('finanzas')} className={`px-4 py-2 text-sm font-semibold rounded-md transition-all whitespace-nowrap ${activeTab === 'finanzas' ? 'bg-teal-600 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}>Finanzas y Roles</button>
               <button onClick={() => setActiveTab('logistica')} className={`px-4 py-2 text-sm font-semibold rounded-md transition-all whitespace-nowrap ${activeTab === 'logistica' ? 'bg-teal-600 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}>Logística y Catálogo</button>
               <button onClick={() => setActiveTab('reglas')} className={`px-4 py-2 text-sm font-semibold rounded-md transition-all whitespace-nowrap ${activeTab === 'reglas' ? 'bg-teal-600 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}>Reglas Críticas</button>
+              <button onClick={() => setActiveTab('sop')} className={`px-4 py-2 text-sm font-semibold rounded-md transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'sop' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}><BookOpen size={16}/> SOP Ejecutivo</button>
             </div>
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
         {/* TAB 1: FINANZAS Y ROLES */}
         {activeTab === 'finanzas' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -269,6 +272,125 @@ export default function DashboardSocios() {
 
           </div>
         )}
+
+        {/* TAB 4: SOP EJECUTIVO */}
+        {activeTab === 'sop' && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl mx-auto">
+            
+            <div className="bg-indigo-900 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+              <div className="absolute -right-8 -top-8 opacity-10">
+                <BookOpen size={200} />
+              </div>
+              <h2 className="text-3xl font-black mb-2 relative z-10">Procedimiento Operativo Estandarizado (SOP)</h2>
+              <p className="text-indigo-200 text-lg relative z-10">Plan de Negocio Ejecutivo y Guía de Implementación Paso a Paso</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* Bloque 1: Presupuesto Maestro */}
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">1. Presupuesto Maestro (Mes 0)</h3>
+                <p className="text-sm text-slate-600 mb-4">Capital fundacional requerido para reubicación y primer viaje piloto (40 kg).</p>
+                
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                    <span className="text-slate-700">Gastos Socio A (Europa ➔ MX)</span>
+                    <span className="font-bold text-slate-900">$1,830 USD</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                    <span className="text-slate-700">Gastos Socio B (Europa ➔ CU)</span>
+                    <span className="font-bold text-slate-900">$830 USD</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                    <span className="text-slate-700">Inversión Lote Piloto + Vuelos</span>
+                    <span className="font-bold text-slate-900">$1,390 USD</span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
+                    <span className="text-slate-700">Fondo Reserva Conjunto</span>
+                    <span className="font-bold text-slate-900">$1,000 USD</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-indigo-50 border border-indigo-100 rounded-lg mt-2">
+                    <span className="font-bold text-indigo-900">Aporte Exacto por Socio (50%)</span>
+                    <span className="font-black text-indigo-700">$2,525 USD</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bloque 2: Fase Piloto */}
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">2. Resultados Lote Piloto (40 kg)</h3>
+                <p className="text-sm text-slate-600 mb-4">Métrica de validación del primer viaje (2 maletas / 900 unidades).</p>
+                
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-3">
+                    <div className="bg-blue-100 text-blue-700 p-2 rounded-lg"><TrendingUp size={20}/></div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase font-semibold">Costo en Cancún</p>
+                      <p className="font-bold text-slate-900">$990 USD</p>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="bg-teal-100 text-teal-700 p-2 rounded-lg"><DollarSign size={20}/></div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase font-semibold">Recaudación Bruta (La Habana)</p>
+                      <p className="font-bold text-slate-900">$4,100 USD</p>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="bg-emerald-100 text-emerald-700 p-2 rounded-lg"><Wallet size={20}/></div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase font-semibold">Ganancia Neta (Piloto)</p>
+                      <p className="font-bold text-emerald-700">+$2,678 USD</p>
+                    </div>
+                  </li>
+                </ul>
+                <p className="text-xs text-slate-500 mt-4 italic">*Este margen absorbe automáticamente el capital necesario para saltar al Régimen Consolidado sin aportar más dinero desde Europa.</p>
+              </div>
+            </div>
+
+            {/* Fases de Ejecución */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">3. Fases Cronológicas de Ejecución</h3>
+              
+              <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+                
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-indigo-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">1</div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                    <h4 className="font-bold text-slate-900">Días 1-14: Preparación Remota</h4>
+                    <p className="text-sm text-slate-600 mt-2">Consolidación del fondo ($5,050) en cuenta conjunta europea. Socio B prospecta clientes en HAV vía Telegram/WA. Socio A filtra 3 opciones de renta en MX.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-indigo-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">2</div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                    <h4 className="font-bold text-slate-900">Semana 3-4: Instalación</h4>
+                    <p className="text-sm text-slate-600 mt-2">Viajes desde Europa. Socio A firma contrato en Playa del Carmen y pacta volumen con gerentes locales de farmacia. Socio B reacondiciona su casa en Cuba como almacén.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-teal-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">3</div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                    <h4 className="font-bold text-slate-900">Semana 5: Vuelo Piloto</h4>
+                    <p className="text-sm text-slate-600 mt-2">Compra de 40 kg el Lunes con 25% off. Vuelo HAV-CUN-HAV de Socio B (Mártes a Jueves). Paso por Aduana y liquidación inmediata B2B.</p>
+                  </div>
+                </div>
+
+                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-emerald-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">4</div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                    <h4 className="font-bold text-slate-900">Mes 2+: Régimen Consolidado</h4>
+                    <p className="text-sm text-slate-600 mt-2">Escalamiento a 2 viajes por mes de 60 kg (120 kg/mes totales). 100% autofinanciado. Acumulación del Fondo de Reserva de $2,000 USD reteniendo $1,000 de los primeros 2 meses.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+          </div>
+        )}
+
       </main>
     </div>
   );
