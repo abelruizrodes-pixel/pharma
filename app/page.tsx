@@ -1,361 +1,275 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ShieldCheck, Plane, Pill, TrendingUp, PackageCheck, HeartHandshake, Phone, Mail, ChevronDown, CheckCircle2, AlertCircle } from 'lucide-react';
+import { 
+  TrendingUp, Users, Plane, Pill, ShieldAlert, BadgeDollarSign, 
+  MapPin, CheckCircle2, AlertTriangle, CalendarDays, Wallet, FileText 
+} from 'lucide-react';
 
-const LandingPage = () => {
-  const [loteType, setLoteType] = useState('antidolor');
-  const [loteQuantity, setLoteQuantity] = useState(300);
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+export default function DashboardSocios() {
+  const [activeTab, setActiveTab] = useState('finanzas');
 
-  const calculateEstimate = () => {
-    let basePrice = 0;
-    if (loteType === 'antidolor') basePrice = 1.2;
-    if (loteType === 'antibiotico') basePrice = 2.5;
-    if (loteType === 'cronico') basePrice = 1.8;
-    
-    const totalCost = basePrice * loteQuantity;
-    const estimatedResale = totalCost * 1.5; // 50% margin estimate
-    const profit = estimatedResale - totalCost;
-
-    return { totalCost, profit };
-  };
-
-  const { totalCost, profit } = calculateEstimate();
-
-  const faqs = [
-    {
-      question: '¿Qué marcas y laboratorios manejan?',
-      answer: 'Trabajamos directamente con las principales cadenas farmacéuticas y laboratorios en México, garantizando productos originales de marcas reconocidas y genéricos de alta calidad con certificación sanitaria.'
-    },
-    {
-      question: '¿Cómo se garantiza la fecha de vencimiento?',
-      answer: 'Todos los lotes se adquieren bajo demanda. Aseguramos una vigencia mínima de 18 a 24 meses en todos los medicamentos, con inspección física de caducidad antes del envío.'
-    },
-    {
-      question: '¿Cuáles son los métodos de pago aceptados?',
-      answer: 'Aceptamos pagos en efectivo (USD/EUR) en La Habana al momento de la entrega, o mediante Zelle/Transferencia bancaria para familiares en el exterior.'
-    },
-    {
-      question: '¿Venden al menudeo o solo lotes cerrados?',
-      answer: 'Operamos exclusivamente con lotes cerrados mayoristas para garantizar los mejores precios y optimizar la logística aérea. Nuestro enfoque es el aprovisionamiento de botiqueros y distribuidores.'
-    },
-    {
-      question: '¿Manejan sustancias controladas o psicotrópicos?',
-      answer: 'No, operamos con estricto apego legal exclusivamente en productos OTC (de venta libre) y medicamentos de libre dispensación. No manejamos sustancias controladas.'
-    }
+  const top15 = [
+    { id: 1, name: "Paracetamol (500/750mg)", cat: "Dolor/Fiebre", cost: "$0.60 - $0.90", sell: "$2.50 - $3.50", margin: "250%+" },
+    { id: 2, name: "Ibuprofeno (400/600mg)", cat: "Dolor/Fiebre", cost: "$0.80 - $1.20", sell: "$3.00 - $4.00", margin: "230%+" },
+    { id: 3, name: "Diclofenaco (100mg)", cat: "Dolor/Fiebre", cost: "$0.70 - $1.00", sell: "$3.00 - $4.00", margin: "280%+" },
+    { id: 4, name: "Amoxicilina (500mg)", cat: "Antibiótico", cost: "$1.50 - $2.20", sell: "$5.50 - $7.50", margin: "240%+" },
+    { id: 5, name: "Azitromicina (500mg, 3 tabs)", cat: "Antibiótico", cost: "$1.80 - $2.50", sell: "$6.00 - $8.50", margin: "230%+" },
+    { id: 6, name: "Ciprofloxacino (500mg)", cat: "Antibiótico", cost: "$1.60 - $2.30", sell: "$5.50 - $7.50", margin: "220%+" },
+    { id: 7, name: "Metformina (850mg)", cat: "Crónico", cost: "$1.20 - $1.80", sell: "$4.50 - $6.50", margin: "250%+" },
+    { id: 8, name: "Enalapril / Captopril", cat: "Crónico", cost: "$1.00 - $1.50", sell: "$4.00 - $6.00", margin: "280%+" },
+    { id: 9, name: "Losartán (50mg)", cat: "Crónico", cost: "$1.20 - $1.80", sell: "$5.00 - $7.00", margin: "280%+" },
+    { id: 10, name: "Omeprazol (20mg)", cat: "Crónico", cost: "$0.90 - $1.40", sell: "$4.00 - $5.50", margin: "280%+" },
+    { id: 11, name: "Loratadina (10mg)", cat: "Alergias", cost: "$0.60 - $0.90", sell: "$2.50 - $3.50", margin: "280%+" },
+    { id: 12, name: "Dimenhidrinato (Gravinol)", cat: "Náuseas", cost: "$0.80 - $1.20", sell: "$3.50 - $5.00", margin: "300%+" },
+    { id: 13, name: "Metronidazol (500mg)", cat: "Antiparasitario", cost: "$1.00 - $1.50", sell: "$4.00 - $5.50", margin: "260%+" },
+    { id: 14, name: "Clotrimazol (Crema)", cat: "Antimicótico", cost: "$1.00 - $1.40", sell: "$3.50 - $5.00", margin: "250%+" },
+    { id: 15, name: "Suero de Rehidratación Oral", cat: "Rehidratación", cost: "$0.30 - $0.50", sell: "$1.50 - $2.00", margin: "300%+" },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
-      {/* Header / Navbar */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200">
+    <div className="min-h-screen bg-slate-100 font-sans text-slate-900 selection:bg-teal-200">
+      {/* Header */}
+      <header className="bg-slate-900 text-white sticky top-0 z-50 shadow-md border-b border-teal-600/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            <div className="flex items-center gap-2">
-              <div className="bg-teal-600 text-white p-2 rounded-lg">
-                <HeartHandshake size={28} />
+          <div className="flex flex-col md:flex-row justify-between items-center h-auto md:h-16 py-4 md:py-0 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="bg-teal-600 p-2 rounded-lg text-white shadow-lg">
+                <ShieldAlert size={24} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-slate-900 leading-none tracking-tight">FarmaEnlace</h1>
-                <p className="text-sm font-semibold text-teal-600 tracking-widest uppercase">Caribe</p>
-              </div>
-            </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#catalogo" className="text-slate-600 hover:text-teal-700 font-medium transition-colors">Catálogo Mayorista</a>
-              <a href="#calculadora" className="text-slate-600 hover:text-teal-700 font-medium transition-colors">Calculadora de Lotes</a>
-              <a href="#seguridad" className="text-slate-600 hover:text-teal-700 font-medium transition-colors">Seguridad y Envíos</a>
-              <a href="#faq" className="text-slate-600 hover:text-teal-700 font-medium transition-colors">Preguntas Frecuentes</a>
-            </div>
-            <a 
-              href="https://wa.me/1234567890" 
-              className="hidden md:flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-md hover:shadow-lg"
-            >
-              <Phone size={18} />
-              Cotizar por WhatsApp
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="relative bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900/50 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 flex flex-col items-center text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/20 text-teal-300 font-medium text-sm mb-8 border border-teal-500/30">
-            <Plane size={16} /> Vuelos Directos Semanales Cancún ✈ La Habana
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl leading-tight">
-            Suministro Mayorista Directo de Medicamentos <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Cancún – La Habana</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mb-10 leading-relaxed font-light">
-            Lotes cerrados de fármacos esenciales garantizados. Origen 100% farmacéutico mexicano, fechas de caducidad certificadas y entrega coordinada sin intermediarios.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <a href="#catalogo" className="bg-teal-600 hover:bg-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-teal-500/25 flex items-center justify-center gap-2">
-              <PackageCheck size={20} />
-              Ver Catálogo y Precios
-            </a>
-            <a href="https://wa.me/1234567890" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all backdrop-blur-sm flex items-center justify-center gap-2">
-              <Phone size={20} />
-              Hablar con un Asesor
-            </a>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full">
-            {[
-              { icon: <ShieldCheck className="text-teal-400" size={24} />, text: "100% Originales Mexicanos" },
-              { icon: <Plane className="text-cyan-400" size={24} />, text: "Entregas Aéreas Rápidas" },
-              { icon: <TrendingUp className="text-emerald-400" size={24} />, text: "Pago Seguro en USD/Zelle" }
-            ].map((badge, i) => (
-              <div key={i} className="flex items-center justify-center gap-3 bg-white/5 rounded-lg py-3 px-4 border border-white/10 backdrop-blur-md">
-                {badge.icon}
-                <span className="font-medium text-slate-200">{badge.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Propuesta de Valor */}
-      <section id="seguridad" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">¿Por qué elegir FarmaEnlace Caribe?</h3>
-            <p className="text-slate-600 max-w-2xl mx-auto text-lg">Garantizamos seguridad, rapidez y rentabilidad para tu negocio de distribución en Cuba.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <ShieldCheck size={40} className="text-teal-600 mb-4" />,
-                title: "Trazabilidad Garantizada",
-                desc: "Compras directas en cadenas farmacéuticas mexicanas. Blísteres sellados de fábrica y vigencia certificada de 18 a 24 meses. Cero falsificaciones."
-              },
-              {
-                icon: <Plane size={40} className="text-cyan-600 mb-4" />,
-                title: "Logística Exprés Cancún–Habana",
-                desc: "Enlace aéreo directo en menos de 24-48 horas desde la compra. Evita meses de espera marítima y asegúrate de tener stock cuando importa."
-              },
-              {
-                icon: <TrendingUp size={40} className="text-emerald-600 mb-4" />,
-                title: "Moneda Fuerte y Predecible",
-                desc: "Facturación mayorista en USD/EUR o Zelle. Protege tus márgenes contra la devaluación local y opera con confianza desde el exterior o la isla."
-              }
-            ].map((feature, i) => (
-              <div key={i} className="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-teal-200 hover:shadow-xl transition-all duration-300 group">
-                <div className="bg-white w-16 h-16 rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {feature.icon}
-                </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h4>
-                <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Catálogo */}
-      <section id="catalogo" className="py-24 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Catálogo de Categorías Críticas</h3>
-            <p className="text-slate-600 text-lg">Arma tus lotes combinando las categorías de mayor demanda.</p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Dolor y Antiinflamatorios", items: "Paracetamol, Ibuprofeno, Diclofenaco", color: "bg-orange-50 border-orange-200 text-orange-700" },
-              { title: "Antibióticos Esenciales", items: "Azitromicina, Amoxicilina, Ciprofloxacino", color: "bg-blue-50 border-blue-200 text-blue-700" },
-              { title: "Tratamientos Crónicos", items: "Losartán, Enalapril, Metformina, Omeprazol", color: "bg-teal-50 border-teal-200 text-teal-700" },
-              { title: "Urgencias y Tópicos", items: "Clotrimazol, Hidrocortisona, Sueros orales", color: "bg-rose-50 border-rose-200 text-rose-700" }
-            ].map((cat, i) => (
-              <div key={i} className={`p-6 rounded-2xl border ${cat.color} hover:shadow-md transition-shadow`}>
-                <Pill className="mb-4 opacity-80" size={32} />
-                <h4 className="font-bold text-lg mb-2">{cat.title}</h4>
-                <p className="opacity-90 text-sm leading-relaxed">{cat.items}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Calculadora */}
-      <section id="calculadora" className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden text-white">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl" />
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-8">Calculadora de Rentabilidad Mayorista</h3>
-              
-              <div className="grid md:grid-cols-2 gap-12">
-                <div className="space-y-8">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-3">Selecciona el tipo de lote principal</label>
-                    <select 
-                      className="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 focus:ring-2 focus:ring-teal-500 outline-none"
-                      value={loteType}
-                      onChange={(e) => setLoteType(e.target.value)}
-                    >
-                      <option value="antidolor">Pack Esencial Antidolor</option>
-                      <option value="antibiotico">Pack Antibióticos & Infecciones</option>
-                      <option value="cronico">Pack Tratamiento Crónico Familiar</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <div className="flex justify-between mb-3">
-                      <label className="text-sm font-medium text-slate-300">Cantidad (unidades/cajas)</label>
-                      <span className="text-teal-400 font-bold">{loteQuantity} uds</span>
-                    </div>
-                    <input 
-                      type="range" 
-                      min="100" max="2000" step="50"
-                      value={loteQuantity}
-                      onChange={(e) => setLoteQuantity(parseInt(e.target.value))}
-                      className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 backdrop-blur-sm">
-                  <h4 className="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider">Proyección Estimada</h4>
-                  <div className="space-y-4 mb-8">
-                    <div className="flex justify-between items-end border-b border-slate-700 pb-4">
-                      <span className="text-slate-300">Inversión Lote</span>
-                      <span className="text-2xl font-bold text-white">${totalCost.toFixed(2)} <span className="text-sm font-normal text-slate-500">USD</span></span>
-                    </div>
-                    <div className="flex justify-between items-end border-b border-slate-700 pb-4">
-                      <span className="text-slate-300">Margen de Reventa (Est.)</span>
-                      <span className="text-2xl font-bold text-emerald-400">+${profit.toFixed(2)} <span className="text-sm font-normal text-emerald-600">USD</span></span>
-                    </div>
-                    <div className="flex justify-between items-center pt-2">
-                      <span className="text-slate-400 text-sm flex items-center gap-1"><Plane size={14}/> Entrega est:</span>
-                      <span className="text-white text-sm font-medium">3-5 días hábiles</span>
-                    </div>
-                  </div>
-                  <a href={`https://wa.me/1234567890?text=Hola, quiero cotizar un ${loteType} de ${loteQuantity} unidades.`} className="w-full block text-center bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl font-bold transition-colors">
-                    Reservar Lote por WhatsApp
-                  </a>
-                  <p className="text-xs text-slate-500 mt-4 text-center">
-                    *Valores referenciales. Sujetos a cotización final según disponibilidad y peso volumétrico.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Proceso */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Proceso de Compra Transparente</h3>
-            <p className="text-slate-600 text-lg">De Cancún a La Habana en 4 sencillos pasos.</p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { step: "1", title: "Cotización", desc: "Seleccionas tu lote o nos envías tu lista de requerimientos específicos." },
-              { step: "2", title: "Pago Seguro", desc: "Fijamos condiciones. Pago en USD físico en La Habana o Zelle desde el exterior." },
-              { step: "3", title: "Logística Aérea", desc: "Compra en México y traslado aéreo inmediato con empaque normativo protector." },
-              { step: "4", title: "Entrega Física", desc: "Inspección de sellos y entrega en mano en punto seguro acordado en La Habana." }
-            ].map((s, i) => (
-              <div key={i} className="relative">
-                {i < 3 && <div className="hidden lg:block absolute top-6 left-1/2 w-full h-0.5 bg-slate-200" />}
-                <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-teal-600 text-white font-bold text-xl flex items-center justify-center mb-6 ring-4 ring-slate-50">
-                    {s.step}
-                  </div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-2">{s.title}</h4>
-                  <p className="text-slate-600">{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="py-24 bg-white border-y border-slate-200">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-3xl font-bold text-slate-900 mb-10 text-center">Preguntas Frecuentes</h3>
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <div key={i} className="border border-slate-200 rounded-xl overflow-hidden">
-                <button 
-                  className="w-full px-6 py-4 text-left flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition-colors"
-                  onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                >
-                  <span className="font-semibold text-slate-900">{faq.question}</span>
-                  <ChevronDown className={`transform transition-transform ${activeFaq === i ? 'rotate-180' : ''}`} size={20} />
-                </button>
-                {activeFaq === i && (
-                  <div className="px-6 py-4 bg-white text-slate-600 border-t border-slate-200 leading-relaxed">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="text-teal-500">
-                  <HeartHandshake size={32} />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-white leading-none tracking-tight">FarmaEnlace</h2>
-                  <p className="text-sm font-semibold text-teal-500 tracking-widest uppercase">Caribe</p>
-                </div>
-              </div>
-              <p className="text-sm mb-6">
-                Tu socio logístico confiable para el aprovisionamiento mayorista de insumos médicos de México a Cuba.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="hover:text-white transition-colors"><Mail size={24}/></a>
-                <a href="#" className="hover:text-white transition-colors"><Phone size={24}/></a>
+                <h1 className="text-xl font-black tracking-tight leading-none text-white">FarmaEnlace Caribe</h1>
+                <p className="text-xs font-bold text-teal-400 tracking-widest uppercase mt-1">Dashboard Socios (Privado)</p>
               </div>
             </div>
             
-            <div>
-              <h4 className="text-white font-bold mb-6">Contacto Directo</h4>
-              <ul className="space-y-4">
-                <li><a href="https://wa.me/1234567890" className="flex items-center gap-2 hover:text-green-400 transition-colors"><Phone size={18}/> WhatsApp (Recomendado)</a></li>
-                <li><a href="#" className="flex items-center gap-2 hover:text-blue-400 transition-colors"><Mail size={18}/> Telegram</a></li>
-                <li><span className="flex items-center gap-2"><Mail size={18}/> logística@farmaenlacecaribe.com</span></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-bold mb-6">Horarios de Atención</h4>
-              <ul className="space-y-2 text-sm">
-                <li><strong className="text-slate-300">Oficina Cancún:</strong> Lunes a Viernes (9:00 AM - 6:00 PM)</li>
-                <li><strong className="text-slate-300">Logística La Habana:</strong> Entregas diarias coordinadas.</li>
-                <li><strong className="text-slate-300">Soporte WhatsApp:</strong> 24/7 para emergencias logísticas.</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="pt-8 border-t border-slate-800 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; {new Date().getFullYear()} FarmaEnlace Caribe. Todos los derechos reservados.</p>
-            <div className="flex items-center gap-2 text-xs text-slate-500 bg-slate-800/50 p-3 rounded-lg">
-              <AlertCircle size={16} className="text-amber-500 shrink-0" />
-              <p>Aviso Legal: Operamos estrictamente con productos OTC y de libre dispensación. No manejamos medicamentos controlados o psicotrópicos. Cumplimos con las regulaciones de equipaje acompañado aduanales vigentes.</p>
+            <div className="flex bg-slate-800 rounded-lg p-1 shadow-inner overflow-x-auto w-full md:w-auto">
+              <button onClick={() => setActiveTab('finanzas')} className={`px-4 py-2 text-sm font-semibold rounded-md transition-all whitespace-nowrap ${activeTab === 'finanzas' ? 'bg-teal-600 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}>Finanzas y Roles</button>
+              <button onClick={() => setActiveTab('logistica')} className={`px-4 py-2 text-sm font-semibold rounded-md transition-all whitespace-nowrap ${activeTab === 'logistica' ? 'bg-teal-600 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}>Logística y Catálogo</button>
+              <button onClick={() => setActiveTab('reglas')} className={`px-4 py-2 text-sm font-semibold rounded-md transition-all whitespace-nowrap ${activeTab === 'reglas' ? 'bg-teal-600 text-white shadow-sm' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}>Reglas Críticas</button>
             </div>
           </div>
         </div>
-      </footer>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* TAB 1: FINANZAS Y ROLES */}
+        {activeTab === 'finanzas' && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* KPI Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-blue-500">
+                <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Costo Fijo + Operación</p>
+                <h3 className="text-3xl font-black text-slate-900">$2,770 <span className="text-lg font-medium text-slate-400">USD</span></h3>
+                <p className="text-xs text-slate-500 mt-2">Gastos de vida de ambos + boletos y maletas</p>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-amber-500">
+                <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Inversión Fármacos (Mensual)</p>
+                <h3 className="text-3xl font-black text-slate-900">$3,700 <span className="text-lg font-medium text-slate-400">USD</span></h3>
+                <p className="text-xs text-slate-500 mt-2">Costo por 2 viajes (120kg totales / 2,600 uds)</p>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-teal-500">
+                <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Venta Mayorista (HAV)</p>
+                <h3 className="text-3xl font-black text-teal-600">$11,800 <span className="text-lg font-medium text-teal-400">USD</span></h3>
+                <p className="text-xs text-slate-500 mt-2">Retorno bruto total del mes</p>
+              </div>
+              <div className="bg-slate-900 p-6 rounded-2xl shadow-lg border-l-4 border-l-emerald-500 text-white relative overflow-hidden">
+                <div className="absolute -right-4 -bottom-4 opacity-10"><Wallet size={120} /></div>
+                <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-1 relative z-10">Ganancia Neta (Limpia)</p>
+                <h3 className="text-3xl font-black text-white relative z-10">+$5,330 <span className="text-lg font-medium text-slate-400">USD</span></h3>
+                <p className="text-xs text-slate-300 mt-2 relative z-10">Beneficio a repartir (Sostenimiento ya pagado)</p>
+              </div>
+            </div>
+
+            {/* Roles y Presupuesto Base */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Socio Playa del Carmen */}
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div className="bg-blue-50 border-b border-blue-100 p-5 flex items-center gap-4">
+                  <div className="bg-blue-600 text-white p-3 rounded-full"><MapPin size={20} /></div>
+                  <div>
+                    <h2 className="text-lg font-bold text-blue-900">Socio en Playa del Carmen (México)</h2>
+                    <p className="text-sm text-blue-700">Responsable de Gestión, Compras y Empaque</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <ul className="space-y-4 mb-6">
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Comprar con descuento en farmacias los lunes (Similares).</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Empaquetar al gramo exacto (3 maletas de 21.5 - 22 kg) en duffel bags.</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Dar alojamiento al socio de Cuba durante su visita exprés a MX.</span></li>
+                  </ul>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 className="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider border-b border-slate-200 pb-2">Gastos Mensuales Asignados</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between"><span className="text-slate-600">Renta Depto Playa del Carmen</span><span className="font-semibold">$650</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Servicios (CFE, Internet, Gas)</span><span className="font-semibold">$150</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Alimentación / Gastos base</span><span className="font-semibold">$400</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Transporte local / Gasolina</span><span className="font-semibold">$120</span></div>
+                      <div className="flex justify-between pt-2 border-t border-slate-200 font-bold"><span className="text-slate-900">Total Fijo México</span><span className="text-blue-600">$1,320 USD</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Socio La Habana */}
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div className="bg-rose-50 border-b border-rose-100 p-5 flex items-center gap-4">
+                  <div className="bg-rose-600 text-white p-3 rounded-full"><Plane size={20} /></div>
+                  <div>
+                    <h2 className="text-lg font-bold text-rose-900">Socio Viajero en La Habana (Cuba)</h2>
+                    <p className="text-sm text-rose-700">Responsable de Viajes, Aduana y Cobros B2B</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <ul className="space-y-4 mb-6">
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Volar 2 veces al mes (CUN-HAV) y aplicar exención aduanera (Canal Verde).</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Recibir la mercancía en casa propia en La Habana (Seguridad total).</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Venta exclusiva mayorista a 2-3 clientes fijos y cobro estricto en divisa.</span></li>
+                  </ul>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <h4 className="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider border-b border-slate-200 pb-2">Gastos Mensuales Asignados</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between"><span className="text-slate-600">Sostenimiento personal HAB</span><span className="font-semibold">$250</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Gastos Casa HAB (Agua/Luz)</span><span className="font-semibold">$80</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Logística (2 Vuelos CUN-HAV-CUN)</span><span className="font-semibold">$520</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Facturación de 6 Maletas (23kg)</span><span className="font-semibold">$440</span></div>
+                      <div className="flex justify-between pt-2 border-t border-slate-200 font-bold"><span className="text-slate-900">Total Fijo Cuba + Logística</span><span className="text-rose-600">$1,450 USD</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 flex items-center justify-between shadow-sm">
+              <div className="flex items-center gap-4">
+                <Users size={32} className="text-emerald-600" />
+                <div>
+                  <h3 className="text-lg font-bold text-emerald-900">Reparto 50/50 de la Utilidad Neta</h3>
+                  <p className="text-emerald-700 text-sm">Tras cubrir el costo de reposición del inventario ($3,700) y todos los gastos de vida de ambos ($2,770).</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-sm font-semibold text-emerald-600 uppercase">A cada socio (Mes)</p>
+                <h4 className="text-2xl font-black text-emerald-700">+$2,665 USD</h4>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2: LOGÍSTICA Y CATÁLOGO */}
+        {activeTab === 'logistica' && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+              <div className="bg-slate-900 p-6 flex items-center justify-between">
+                <div>
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2"><CalendarDays className="text-teal-400"/> Cronograma Quincenal (1 Viaje = 60 kg)</h2>
+                  <p className="text-slate-400 text-sm mt-1">El ciclo se repite 2 veces por mes. Máximo perfil bajo migratorio.</p>
+                </div>
+              </div>
+              <div className="p-0">
+                <div className="grid grid-cols-1 md:grid-cols-6 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                  <div className="p-5 hover:bg-slate-50 transition-colors">
+                    <span className="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded">Día 1 (Lunes)</span>
+                    <h4 className="font-bold text-slate-800 mt-3 text-sm">Compra MX</h4>
+                    <p className="text-xs text-slate-500 mt-1">Socio Playa compra con 25% descuento en farmacias. Embala 3 maletas (21.5kg c/u).</p>
+                  </div>
+                  <div className="p-5 hover:bg-slate-50 transition-colors">
+                    <span className="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded">Día 2 (Martes)</span>
+                    <h4 className="font-bold text-slate-800 mt-3 text-sm">Vuelo CUN-HAV</h4>
+                    <p className="text-xs text-slate-500 mt-1">Socio Cuba vuela. Pasa aduana (exención). Mercancía a casa segura.</p>
+                  </div>
+                  <div className="p-5 hover:bg-slate-50 transition-colors">
+                    <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">Día 3 (Miérc.)</span>
+                    <h4 className="font-bold text-slate-800 mt-3 text-sm">Venta y Cobro</h4>
+                    <p className="text-xs text-slate-500 mt-1">Entrega a mayoristas fijos. Cobro inmediato en efectivo USD/EUR.</p>
+                  </div>
+                  <div className="p-5 hover:bg-slate-50 transition-colors">
+                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Día 4 (Jueves)</span>
+                    <h4 className="font-bold text-slate-800 mt-3 text-sm">Retorno CUN</h4>
+                    <p className="text-xs text-slate-500 mt-1">Vuelo HAV-CUN. Ingreso con efectivo en mano (menos de $5,000 USD legales).</p>
+                  </div>
+                  <div className="p-5 hover:bg-slate-50 transition-colors col-span-2">
+                    <span className="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">Días 5 a 14</span>
+                    <h4 className="font-bold text-slate-800 mt-3 text-sm">Reposición y Descanso</h4>
+                    <p className="text-xs text-slate-500 mt-1">Cierre de contabilidad. Pedidos adelantados por WhatsApp para el siguiente lote. Cero exposición pública.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2"><Pill className="text-teal-600"/> Los 15 Medicamentos de Máxima Rentabilidad</h3>
+                <span className="text-xs font-bold uppercase bg-slate-200 text-slate-600 px-3 py-1 rounded-full">Exclusivo OTC</span>
+              </div>
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-slate-50 text-slate-600 uppercase text-xs border-b border-slate-200 font-semibold">
+                    <tr>
+                      <th className="px-6 py-4">Producto Estratégico</th>
+                      <th className="px-6 py-4">Categoría</th>
+                      <th className="px-6 py-4 bg-blue-50">Costo Base MX (USD)</th>
+                      <th className="px-6 py-4 bg-teal-50">Venta B2B Cuba (USD)</th>
+                      <th className="px-6 py-4 bg-emerald-50">Margen Bruto</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {top15.map(item => (
+                      <tr key={item.id} className="hover:bg-slate-50 transition-colors">
+                        <td className="px-6 py-3 font-medium text-slate-900">{item.name}</td>
+                        <td className="px-6 py-3"><span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs">{item.cat}</span></td>
+                        <td className="px-6 py-3 bg-blue-50/30 text-blue-800 font-semibold">{item.cost}</td>
+                        <td className="px-6 py-3 bg-teal-50/30 text-teal-800 font-semibold">{item.sell}</td>
+                        <td className="px-6 py-3 bg-emerald-50/30 text-emerald-700 font-bold">{item.margin}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        )}
+
+        {/* TAB 3: REGLAS CRÍTICAS */}
+        {activeTab === 'reglas' && (
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
+            
+            <div className="bg-rose-50 border-l-4 border-rose-500 p-6 rounded-r-xl shadow-sm flex items-start gap-4">
+              <AlertTriangle className="text-rose-600 shrink-0" size={28} />
+              <div>
+                <h3 className="text-lg font-bold text-rose-900 mb-1">PROHIBICIÓN ABSOLUTA: Drogas y Psicotrópicos</h3>
+                <p className="text-rose-800 text-sm leading-relaxed">
+                  Llevar Tramadol, Clonazepam, Diazepam, Alprazolam o cualquier opioide/barbitúrico sin receta constituye delito de TRÁFICO INTERNACIONAL DE DROGAS en México y Cuba. <strong>Operamos exclusivamente OTC y genéricos no controlados. Sin excepciones.</strong>
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+              <div className="p-6 border-b border-slate-100">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2"><BadgeDollarSign className="text-amber-500"/> Política de Cobros en La Habana</h3>
+                <ul className="mt-4 space-y-3">
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Cero Menudeo:</strong> Nunca se vende al detalle. Se entregan lotes completos a 2 o 3 clientes preacordados.</p></li>
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Cero CUP:</strong> No aceptar pesos cubanos. Si es inevitable, la tasa de cambio debe cubrir la recompra inmediata de USD en el mercado informal en las siguientes 2 horas para evitar devaluación.</p></li>
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Cobro Limpio:</strong> Recibir pagos solo en billetes USD/EUR sanos o Zelle (previo a la entrega física).</p></li>
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Límite Aduanal:</strong> No viajar de regreso a Cancún con más de $5,000 USD en efectivo por pasajero para no estar obligados a declarar origen de fondos (Aduana de Cuba).</p></li>
+                </ul>
+              </div>
+
+              <div className="p-6 border-b border-slate-100 bg-slate-50">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2"><FileText className="text-blue-500"/> Reglas de Empaque y Aduana (Canal Verde)</h3>
+                <ul className="mt-4 space-y-3">
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>No Mezclar:</strong> Las maletas deben llevar 100% medicinas. Nada de ropa, aseo o comida, para garantizar la exención de aranceles directa al pasar por la aduana de Cuba.</p></li>
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Trazabilidad:</strong> Conservar empaques originales, lotes legibles y fechas de caducidad superior a 18 meses. Guardar los tickets de farmacia mexicanos para el escáner de salida en Cancún (SAT).</p></li>
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Diversificar Sucursales MX:</strong> No comprar las 1,300 unidades en una sola farmacia en Playa del Carmen/Cancún. Rotar entre sucursales para no levantar alertas por desabastecimiento local.</p></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        )}
+      </main>
     </div>
   );
-};
-
-export default LandingPage;
+}
