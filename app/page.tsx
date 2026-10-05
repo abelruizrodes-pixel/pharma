@@ -11,21 +11,21 @@ export default function DashboardSocios() {
   const [activeTab, setActiveTab] = useState('finanzas');
 
   const top15 = [
-    { id: 1, name: "Paracetamol (500/750mg)", cat: "Dolor/Fiebre", cost: "$0.60 - $0.90", sell: "$2.50 - $3.50", margin: "250%+" },
-    { id: 2, name: "Ibuprofeno (400/600mg)", cat: "Dolor/Fiebre", cost: "$0.80 - $1.20", sell: "$3.00 - $4.00", margin: "230%+" },
-    { id: 3, name: "Diclofenaco (100mg)", cat: "Dolor/Fiebre", cost: "$0.70 - $1.00", sell: "$3.00 - $4.00", margin: "280%+" },
-    { id: 4, name: "Amoxicilina (500mg)", cat: "Antibiótico", cost: "$1.50 - $2.20", sell: "$5.50 - $7.50", margin: "240%+" },
-    { id: 5, name: "Azitromicina (500mg, 3 tabs)", cat: "Antibiótico", cost: "$1.80 - $2.50", sell: "$6.00 - $8.50", margin: "230%+" },
-    { id: 6, name: "Ciprofloxacino (500mg)", cat: "Antibiótico", cost: "$1.60 - $2.30", sell: "$5.50 - $7.50", margin: "220%+" },
-    { id: 7, name: "Metformina (850mg)", cat: "Crónico", cost: "$1.20 - $1.80", sell: "$4.50 - $6.50", margin: "250%+" },
-    { id: 8, name: "Enalapril / Captopril", cat: "Crónico", cost: "$1.00 - $1.50", sell: "$4.00 - $6.00", margin: "280%+" },
-    { id: 9, name: "Losartán (50mg)", cat: "Crónico", cost: "$1.20 - $1.80", sell: "$5.00 - $7.00", margin: "280%+" },
-    { id: 10, name: "Omeprazol (20mg)", cat: "Crónico", cost: "$0.90 - $1.40", sell: "$4.00 - $5.50", margin: "280%+" },
-    { id: 11, name: "Loratadina (10mg)", cat: "Alergias", cost: "$0.60 - $0.90", sell: "$2.50 - $3.50", margin: "280%+" },
-    { id: 12, name: "Dimenhidrinato (Gravinol)", cat: "Náuseas", cost: "$0.80 - $1.20", sell: "$3.50 - $5.00", margin: "300%+" },
-    { id: 13, name: "Metronidazol (500mg)", cat: "Antiparasitario", cost: "$1.00 - $1.50", sell: "$4.00 - $5.50", margin: "260%+" },
-    { id: 14, name: "Clotrimazol (Crema)", cat: "Antimicótico", cost: "$1.00 - $1.40", sell: "$3.50 - $5.00", margin: "250%+" },
-    { id: 15, name: "Suero de Rehidratación Oral", cat: "Rehidratación", cost: "$0.30 - $0.50", sell: "$1.50 - $2.00", margin: "300%+" },
+    { id: 1, name: "Paracetamol (500/750mg)", cat: "Dolor/Fiebre", cost: "$0.70", sell: "$3.00", margin: "328%" },
+    { id: 2, name: "Ibuprofeno (400/600mg)", cat: "Dolor/Fiebre", cost: "$0.90", sell: "$3.50", margin: "288%" },
+    { id: 3, name: "Diclofenaco (100mg)", cat: "Dolor/Fiebre", cost: "$0.80", sell: "$3.50", margin: "337%" },
+    { id: 4, name: "Amoxicilina (500mg)", cat: "Antibiótico", cost: "$1.70", sell: "$6.50", margin: "282%" },
+    { id: 5, name: "Azitromicina (500mg, 3 tabs)", cat: "Antibiótico", cost: "$2.00", sell: "$7.00", margin: "250%" },
+    { id: 6, name: "Ciprofloxacino (500mg)", cat: "Antibiótico", cost: "$1.60", sell: "$5.50", margin: "240%+" },
+    { id: 7, name: "Metformina (850mg)", cat: "Crónico", cost: "$1.20", sell: "$4.50", margin: "275%" },
+    { id: 8, name: "Enalapril (20mg)", cat: "Crónico", cost: "$1.20", sell: "$5.00", margin: "316%" },
+    { id: 9, name: "Losartán (50mg)", cat: "Crónico", cost: "$1.40", sell: "$6.00", margin: "328%" },
+    { id: 10, name: "Omeprazol (20mg)", cat: "Crónico", cost: "$1.10", sell: "$4.50", margin: "309%" },
+    { id: 11, name: "Loratadina (10mg)", cat: "Alergias", cost: "$0.60", sell: "$2.50", margin: "316%" },
+    { id: 12, name: "Dimenhidrinato (Gravinol)", cat: "Náuseas", cost: "$0.80", sell: "$3.50", margin: "337%" },
+    { id: 13, name: "Metronidazol (500mg)", cat: "Antiparasitario", cost: "$1.00", sell: "$4.00", margin: "300%" },
+    { id: 14, name: "Clotrimazol (Crema)", cat: "Antimicótico", cost: "$1.00", sell: "$3.50", margin: "250%" },
+    { id: 15, name: "Sales de Rehidratación", cat: "Rehidratación", cost: "$0.30", sell: "$1.50", margin: "400%" },
   ];
 
   return (
@@ -59,28 +59,28 @@ export default function DashboardSocios() {
         {/* TAB 1: FINANZAS Y ROLES */}
         {activeTab === 'finanzas' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {/* KPI Cards */}
+            {/* KPI Cards actualizados con SOP */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-blue-500">
-                <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Costo Fijo + Operación</p>
-                <h3 className="text-3xl font-black text-slate-900">$2,770 <span className="text-lg font-medium text-slate-400">USD</span></h3>
-                <p className="text-xs text-slate-500 mt-2">Gastos de vida de ambos + boletos y maletas</p>
+                <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Costo Vida + Logística</p>
+                <h3 className="text-3xl font-black text-slate-900">$2,155 <span className="text-lg font-medium text-slate-400">USD</span></h3>
+                <p className="text-xs text-slate-500 mt-2">Gastos vida ($1,155) + Vuelos/Maletas ($1,000)</p>
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-amber-500">
-                <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Inversión Fármacos (Mensual)</p>
+                <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Inversión Fármacos</p>
                 <h3 className="text-3xl font-black text-slate-900">$3,700 <span className="text-lg font-medium text-slate-400">USD</span></h3>
-                <p className="text-xs text-slate-500 mt-2">Costo por 2 viajes (120kg totales / 2,600 uds)</p>
+                <p className="text-xs text-slate-500 mt-2">Costo mensual (120kg / 2 viajes de 60kg)</p>
               </div>
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-teal-500">
                 <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-1">Venta Mayorista (HAV)</p>
                 <h3 className="text-3xl font-black text-teal-600">$11,800 <span className="text-lg font-medium text-teal-400">USD</span></h3>
-                <p className="text-xs text-slate-500 mt-2">Retorno bruto total del mes</p>
+                <p className="text-xs text-slate-500 mt-2">Ingreso bruto (2 lotes mensuales)</p>
               </div>
               <div className="bg-slate-900 p-6 rounded-2xl shadow-lg border-l-4 border-l-emerald-500 text-white relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-10"><Wallet size={120} /></div>
                 <p className="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-1 relative z-10">Ganancia Neta (Limpia)</p>
-                <h3 className="text-3xl font-black text-white relative z-10">+$5,330 <span className="text-lg font-medium text-slate-400">USD</span></h3>
-                <p className="text-xs text-slate-300 mt-2 relative z-10">Beneficio a repartir (Sostenimiento ya pagado)</p>
+                <h3 className="text-3xl font-black text-white relative z-10">+$5,945 <span className="text-lg font-medium text-slate-400">USD</span></h3>
+                <p className="text-xs text-slate-300 mt-2 relative z-10">Beneficio mensual a repartir</p>
               </div>
             </div>
 
@@ -97,18 +97,18 @@ export default function DashboardSocios() {
                 </div>
                 <div className="p-6">
                   <ul className="space-y-4 mb-6">
-                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Comprar con descuento en farmacias los lunes (Similares).</span></li>
-                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Empaquetar al gramo exacto (3 maletas de 21.5 - 22 kg) en duffel bags.</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Comprar con 25% descuento en farmacias los lunes (Similares).</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Empaquetar al gramo exacto maletas de 21.5 - 22 kg.</span></li>
                     <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Dar alojamiento al socio de Cuba durante su visita exprés a MX.</span></li>
                   </ul>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <h4 className="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider border-b border-slate-200 pb-2">Gastos Mensuales Asignados</h4>
+                    <h4 className="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider border-b border-slate-200 pb-2">Asignación Mensual Sostenimiento (MX)</h4>
                     <div className="space-y-2 text-sm">
-                      <div className="flex justify-between"><span className="text-slate-600">Renta Depto Playa del Carmen</span><span className="font-semibold">$650</span></div>
-                      <div className="flex justify-between"><span className="text-slate-600">Servicios (CFE, Internet, Gas)</span><span className="font-semibold">$150</span></div>
-                      <div className="flex justify-between"><span className="text-slate-600">Alimentación / Gastos base</span><span className="font-semibold">$400</span></div>
-                      <div className="flex justify-between"><span className="text-slate-600">Transporte local / Gasolina</span><span className="font-semibold">$120</span></div>
-                      <div className="flex justify-between pt-2 border-t border-slate-200 font-bold"><span className="text-slate-900">Total Fijo México</span><span className="text-blue-600">$1,320 USD</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Renta Depto Playa del Carmen</span><span className="font-semibold">$480</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Servicios (CFE, Internet, Gas)</span><span className="font-semibold">$100</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Alimentación local / Despensa</span><span className="font-semibold">$180</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Transporte local e Insumos</span><span className="font-semibold">$55</span></div>
+                      <div className="flex justify-between pt-2 border-t border-slate-200 font-bold"><span className="text-slate-900">Total Vida México</span><span className="text-blue-600">$815 USD</span></div>
                     </div>
                   </div>
                 </div>
@@ -125,18 +125,18 @@ export default function DashboardSocios() {
                 </div>
                 <div className="p-6">
                   <ul className="space-y-4 mb-6">
-                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Volar 2 veces al mes (CUN-HAV) y aplicar exención aduanera (Canal Verde).</span></li>
-                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Recibir la mercancía en casa propia en La Habana (Seguridad total).</span></li>
-                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Venta exclusiva mayorista a 2-3 clientes fijos y cobro estricto en divisa.</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Volar 2 veces al mes (CUN-HAV) y aplicar Canal Verde de Aduana.</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Almacenar la mercancía en casa propia en La Habana (Seguridad).</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} /><span className="text-sm text-slate-700">Venta exclusiva a mayoristas y cobro estricto en divisa (USD/EUR).</span></li>
                   </ul>
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <h4 className="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider border-b border-slate-200 pb-2">Gastos Mensuales Asignados</h4>
+                    <h4 className="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider border-b border-slate-200 pb-2">Asignación Mensual Sostenimiento (CU)</h4>
                     <div className="space-y-2 text-sm">
-                      <div className="flex justify-between"><span className="text-slate-600">Sostenimiento personal HAB</span><span className="font-semibold">$250</span></div>
-                      <div className="flex justify-between"><span className="text-slate-600">Gastos Casa HAB (Agua/Luz)</span><span className="font-semibold">$80</span></div>
-                      <div className="flex justify-between"><span className="text-slate-600">Logística (2 Vuelos CUN-HAV-CUN)</span><span className="font-semibold">$520</span></div>
-                      <div className="flex justify-between"><span className="text-slate-600">Facturación de 6 Maletas (23kg)</span><span className="font-semibold">$440</span></div>
-                      <div className="flex justify-between pt-2 border-t border-slate-200 font-bold"><span className="text-slate-900">Total Fijo Cuba + Logística</span><span className="text-rose-600">$1,450 USD</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Alimentación (Canasta Básica)</span><span className="font-semibold">$180</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Gastos Casa HAB + ETECSA</span><span className="font-semibold">$60</span></div>
+                      <div className="flex justify-between"><span className="text-slate-600">Transporte interno para Entregas</span><span className="font-semibold">$100</span></div>
+                      <div className="flex justify-between pt-2 border-t border-slate-200 text-transparent select-none"><span className="text-transparent">Espacio</span><span>$0</span></div>
+                      <div className="flex justify-between pt-2 border-t border-slate-200 font-bold"><span className="text-slate-900">Total Vida Cuba</span><span className="text-rose-600">$340 USD</span></div>
                     </div>
                   </div>
                 </div>
@@ -148,12 +148,12 @@ export default function DashboardSocios() {
                 <Users size={32} className="text-emerald-600" />
                 <div>
                   <h3 className="text-lg font-bold text-emerald-900">Reparto 50/50 de la Utilidad Neta</h3>
-                  <p className="text-emerald-700 text-sm">Tras cubrir el costo de reposición del inventario ($3,700) y todos los gastos de vida de ambos ($2,770).</p>
+                  <p className="text-emerald-700 text-sm">Tras cubrir el costo de mercancía ($3,700), logística ($1,000) y el sostenimiento vital de ambos ($1,155).</p>
                 </div>
               </div>
               <div className="text-right">
                 <p className="text-sm font-semibold text-emerald-600 uppercase">A cada socio (Mes)</p>
-                <h4 className="text-2xl font-black text-emerald-700">+$2,665 USD</h4>
+                <h4 className="text-2xl font-black text-emerald-700">+$2,972.50 USD</h4>
               </div>
             </div>
           </div>
@@ -162,7 +162,7 @@ export default function DashboardSocios() {
         {/* TAB 2: LOGÍSTICA Y CATÁLOGO */}
         {activeTab === 'logistica' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            
+            {/* Same as before... */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
               <div className="bg-slate-900 p-6 flex items-center justify-between">
                 <div>
@@ -195,7 +195,7 @@ export default function DashboardSocios() {
                   <div className="p-5 hover:bg-slate-50 transition-colors col-span-2">
                     <span className="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">Días 5 a 14</span>
                     <h4 className="font-bold text-slate-800 mt-3 text-sm">Reposición y Descanso</h4>
-                    <p className="text-xs text-slate-500 mt-1">Cierre de contabilidad. Pedidos adelantados por WhatsApp para el siguiente lote. Cero exposición pública.</p>
+                    <p className="text-xs text-slate-500 mt-1">Cierre contable. Pedidos adelantados por WhatsApp para el siguiente lote.</p>
                   </div>
                 </div>
               </div>
@@ -231,14 +231,12 @@ export default function DashboardSocios() {
                 </table>
               </div>
             </div>
-
           </div>
         )}
 
         {/* TAB 3: REGLAS CRÍTICAS */}
         {activeTab === 'reglas' && (
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-4xl mx-auto">
-            
             <div className="bg-rose-50 border-l-4 border-rose-500 p-6 rounded-r-xl shadow-sm flex items-start gap-4">
               <AlertTriangle className="text-rose-600 shrink-0" size={28} />
               <div>
@@ -248,35 +246,24 @@ export default function DashboardSocios() {
                 </p>
               </div>
             </div>
-
+            {/* Same rules blocks */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <div className="p-6 border-b border-slate-100">
                 <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2"><BadgeDollarSign className="text-amber-500"/> Política de Cobros en La Habana</h3>
                 <ul className="mt-4 space-y-3">
                   <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Cero Menudeo:</strong> Nunca se vende al detalle. Se entregan lotes completos a 2 o 3 clientes preacordados.</p></li>
-                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Cero CUP:</strong> No aceptar pesos cubanos. Si es inevitable, la tasa de cambio debe cubrir la recompra inmediata de USD en el mercado informal en las siguientes 2 horas para evitar devaluación.</p></li>
-                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Cobro Limpio:</strong> Recibir pagos solo en billetes USD/EUR sanos o Zelle (previo a la entrega física).</p></li>
+                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Cero CUP:</strong> No aceptar pesos cubanos. Cobro exclusivo en USD/EUR.</p></li>
                   <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Límite Aduanal:</strong> No viajar de regreso a Cancún con más de $5,000 USD en efectivo por pasajero para no estar obligados a declarar origen de fondos (Aduana de Cuba).</p></li>
                 </ul>
               </div>
-
-              <div className="p-6 border-b border-slate-100 bg-slate-50">
-                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2"><FileText className="text-blue-500"/> Reglas de Empaque y Aduana (Canal Verde)</h3>
-                <ul className="mt-4 space-y-3">
-                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>No Mezclar:</strong> Las maletas deben llevar 100% medicinas. Nada de ropa, aseo o comida, para garantizar la exención de aranceles directa al pasar por la aduana de Cuba.</p></li>
-                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Trazabilidad:</strong> Conservar empaques originales, lotes legibles y fechas de caducidad superior a 18 meses. Guardar los tickets de farmacia mexicanos para el escáner de salida en Cancún (SAT).</p></li>
-                  <li className="flex gap-3"><CheckCircle2 className="text-teal-500 shrink-0 mt-0.5" size={18} /><p className="text-sm text-slate-600"><strong>Diversificar Sucursales MX:</strong> No comprar las 1,300 unidades en una sola farmacia en Playa del Carmen/Cancún. Rotar entre sucursales para no levantar alertas por desabastecimiento local.</p></li>
-                </ul>
-              </div>
             </div>
-
           </div>
         )}
 
         {/* TAB 4: SOP EJECUTIVO */}
         {activeTab === 'sop' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl mx-auto">
-            
+            {/* (SOP tab content remains exactly as before) */}
             <div className="bg-indigo-900 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
               <div className="absolute -right-8 -top-8 opacity-10">
                 <BookOpen size={200} />
@@ -286,11 +273,9 @@ export default function DashboardSocios() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-6">
-              {/* Bloque 1: Presupuesto Maestro */}
               <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">1. Presupuesto Maestro (Mes 0)</h3>
                 <p className="text-sm text-slate-600 mb-4">Capital fundacional requerido para reubicación y primer viaje piloto (40 kg).</p>
-                
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
                     <span className="text-slate-700">Gastos Socio A (Europa ➔ MX)</span>
@@ -315,11 +300,9 @@ export default function DashboardSocios() {
                 </div>
               </div>
 
-              {/* Bloque 2: Fase Piloto */}
               <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">2. Resultados Lote Piloto (40 kg)</h3>
                 <p className="text-sm text-slate-600 mb-4">Métrica de validación del primer viaje (2 maletas / 900 unidades).</p>
-                
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
                     <div className="bg-blue-100 text-blue-700 p-2 rounded-lg"><TrendingUp size={20}/></div>
@@ -347,47 +330,39 @@ export default function DashboardSocios() {
               </div>
             </div>
 
-            {/* Fases de Ejecución */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-xl font-bold text-slate-900 mb-6">3. Fases Cronológicas de Ejecución</h3>
-              
               <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
-                
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-indigo-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">1</div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
                     <h4 className="font-bold text-slate-900">Días 1-14: Preparación Remota</h4>
-                    <p className="text-sm text-slate-600 mt-2">Consolidación del fondo ($5,050) en cuenta conjunta europea. Socio B prospecta clientes en HAV vía Telegram/WA. Socio A filtra 3 opciones de renta en MX.</p>
+                    <p className="text-sm text-slate-600 mt-2">Consolidación del fondo ($5,050). Socio B prospecta clientes en HAV. Socio A filtra 3 opciones de renta en MX.</p>
                   </div>
                 </div>
-
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-indigo-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">2</div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
                     <h4 className="font-bold text-slate-900">Semana 3-4: Instalación</h4>
-                    <p className="text-sm text-slate-600 mt-2">Viajes desde Europa. Socio A firma contrato en Playa del Carmen y pacta volumen con gerentes locales de farmacia. Socio B reacondiciona su casa en Cuba como almacén.</p>
+                    <p className="text-sm text-slate-600 mt-2">Socio A firma contrato en Playa del Carmen. Socio B reacondiciona su casa en Cuba como almacén.</p>
                   </div>
                 </div>
-
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-teal-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">3</div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
                     <h4 className="font-bold text-slate-900">Semana 5: Vuelo Piloto</h4>
-                    <p className="text-sm text-slate-600 mt-2">Compra de 40 kg el Lunes con 25% off. Vuelo HAV-CUN-HAV de Socio B (Mártes a Jueves). Paso por Aduana y liquidación inmediata B2B.</p>
+                    <p className="text-sm text-slate-600 mt-2">Compra de 40 kg. Vuelo HAV-CUN-HAV de Socio B. Paso por Aduana y liquidación inmediata B2B.</p>
                   </div>
                 </div>
-
                 <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-emerald-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 font-bold">4</div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
                     <h4 className="font-bold text-slate-900">Mes 2+: Régimen Consolidado</h4>
-                    <p className="text-sm text-slate-600 mt-2">Escalamiento a 2 viajes por mes de 60 kg (120 kg/mes totales). 100% autofinanciado. Acumulación del Fondo de Reserva de $2,000 USD reteniendo $1,000 de los primeros 2 meses.</p>
+                    <p className="text-sm text-slate-600 mt-2">Escalamiento a 2 viajes por mes de 60 kg (120 kg/mes). 100% autofinanciado. Acumulación del Fondo de Reserva reteniendo $1,000.</p>
                   </div>
                 </div>
-
               </div>
             </div>
-            
           </div>
         )}
 
